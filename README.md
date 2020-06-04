@@ -118,7 +118,12 @@ Older major versions are also supported on separate branches:
 
 ### Bringing up the stack
 
-Turn off SELinux
+Clone Repo:
+```console
+$ git clone https://github.com/cifranix/docker-elk.git
+```
+
+Disable off SELinux
 ```console
 $ setenforce 0
 $ sed -i 's/enforcing/disabled/g' /etc/sysconfig/selinux
