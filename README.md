@@ -118,6 +118,25 @@ Older major versions are also supported on separate branches:
 
 ### Bringing up the stack
 
+Turn off SELinux
+```console
+$ setenforce 0
+$ sed -i 's/enforcing/disabled/g' /etc/sysconfig/selinux
+```
+
+For Centos7, first install docker, and ensure it's on:
+```console
+$ yum -y install epel-release 
+$ yum -y install docker 
+$ systemctl start docker
+$ systemctl enable docker
+```
+Get docker-compose version 1.26.0:
+```console
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+```
+
 Clone this repository onto the Docker host that will run the stack, then start services locally using Docker Compose:
 
 ```console
