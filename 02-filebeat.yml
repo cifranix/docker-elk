@@ -7,12 +7,12 @@ services:
     image: docker.elastic.co/beats/filebeat:7.7.1
     volumes:
     #  #Mount the filebeat configuration so users can make edit
-    #  - ./config/beats/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
     #  #Mount the prospectors directory. Users can in turn add propspectors to this directory and they will be dynamically loaded
     #  - ./config/beats/filebeat/prospectors.d/:/usr/share/filebeat/prospectors.d/
     #  #Mount the nginx logs into the filebeat container so we can access and index them using the filebeat nginx module
     #  - ./logs/nginx/:/var/log/nginx/
-      - /var/log/nginx:/var/log/nginx
+      - /var/log/:/var/log/
     #  #Mount the apache2 logs into the filebeat container so we can access and index them using the filebeat apache2 module
     #  - ./logs/apache2/:/var/log/apache2/
     #  #Mount the mysql logs into the filebeat container so we can access and and index them using the filebeat mysql module
