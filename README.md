@@ -136,10 +136,17 @@ $ yum -y install docker
 $ systemctl start docker
 $ systemctl enable docker
 ```
+
 Get docker-compose version 1.26.0:
 ```console
 $ sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 $ sudo chmod +x /usr/local/bin/docker-compose
+```
+
+Increase virtual memory count
+```console
+$ echo vm.max_map_count=262144 >> /etc/sysctl.conf
+$ sysctl -w vm.max_map_count=262144
 ```
 
 Clone this repository onto the Docker host that will run the stack, then start services locally using Docker Compose:
