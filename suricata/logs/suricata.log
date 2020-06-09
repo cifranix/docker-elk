@@ -1,0 +1,7 @@
+
+9/6/2020 -- 17:19:13 - <Notice> - This is Suricata version 4.1.2 RELEASE
+9/6/2020 -- 17:19:20 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+9/6/2020 -- 17:19:20 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+9/6/2020 -- 17:19:20 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+9/6/2020 -- 17:19:20 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+9/6/2020 -- 17:19:20 - <Notice> - all 1 packet processing threads, 4 management threads initialized, engine started.
