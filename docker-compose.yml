@@ -1,76 +1,61 @@
-version: '3.2'
-
+# build an elastic stack (elasticsearch, kibana, filebeat) 
+version: '2'
 services:
-  elasticsearch:
-    build:
-      context: elasticsearch/
-      args:
-        ELK_VERSION: $ELK_VERSION
-    volumes:
-      - type: bind 
-        source: ./elasticsearch/config/elasticsearch.yml
-        target: /usr/share/elasticsearch/config/elasticsearch.yml
-        read_only: true
-      - type: volume
-        source: elasticsearch
-        target: /usr/share/elasticsearch/data
-    ports:
-      - "9200:9200"
-      - "9300:9300"
+  # build elasticsearch, and call it es01 
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.1
+    container_name: es01
     environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
-      ELASTIC_PASSWORD: changeme
-      # Use single node discovery in order to disable production mode and avoid bootstrap checks
-      # see https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
-      discovery.type: single-node
-    networks:
-      - elk
-
-  logstash:
-    build:
-      context: logstash/
-      args:
-        ELK_VERSION: $ELK_VERSION
+      - node.name=es01
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=es01
+      - cluster.initial_master_nodes=es01
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
     volumes:
-      - type: bind
-        source: ./logstash/config/logstash.yml
-        target: /usr/share/logstash/config/logstash.yml
-        read_only: true
-      - type: bind
-        source: ./logstash/pipeline
-        target: /usr/share/logstash/pipeline
-        read_only: true
+      # store elasticsearch data on the host
+      - data01:/usr/share/elasticsearch/data
+      # get the elasticsearch config file from the host
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
-      - "5000:5000/tcp"
-      - "5000:5000/udp"
-      - "9600:9600"
-    environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+      - 9200:9200
     networks:
-      - elk
-    depends_on:
-      - elasticsearch
-
+      - elastic
+  # filebeat config 
+  filebeat:
+    user: root
+    networks:
+      - elastic
+    image: docker.elastic.co/beats/filebeat:7.7.1
+    volumes:
+      # mount /var/log from host system, and share with container.  
+      #- /var/log/:/var/log/
+      # filebeat config file lives on the host
+      - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      # allow the suricata filebeat module to be customized, and share with filebeat
+      - ./filebeat/modules/suricata/suricata.yml:/usr/share/filebeat/modules.d/suricata.yml
+      - ./suricata/logs/:/var/log/suricata/
+      
+    restart: on-failure
+# start kibana 
   kibana:
-    build:
-      context: kibana/
-#      args:
-#        ELK_VERSION: $ELK_VERSION
+    image: docker.elastic.co/kibana/kibana:7.7.1
     volumes:
-      - type: bind
-        source: ./kibana/config/kibana.yml
-        target: /usr/share/kibana/config/kibana.yml
-        read_only: true
-    ports:
-      - "5601:5601"
+      - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml
+      - ./kibana/plugins:/usr/share/kibana/x-pack/plugins/
     networks:
-      - elk
-    depends_on:
-      - elasticsearch
-
-networks:
-  elk:
-    driver: bridge
+      - elastic
+    ports:
+      - 5601:5601
 
 volumes:
-  elasticsearch:
+  data01:
+    driver: local
+
+networks:
+  elastic:
+    driver: bridge

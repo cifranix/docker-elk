@@ -1,0 +1,34 @@
+version: '2'
+services:
+  filebeat:
+    user: root
+    networks:
+      - elastic
+    image: docker.elastic.co/beats/filebeat:7.7.1
+    volumes:
+    #  #Mount the filebeat configuration so users can make edit
+      - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
+    #  #Mount the prospectors directory. Users can in turn add propspectors to this directory and they will be dynamically loaded
+    #  - ./config/beats/filebeat/prospectors.d/:/usr/share/filebeat/prospectors.d/
+    #  #Mount the nginx logs into the filebeat container so we can access and index them using the filebeat nginx module
+    #  - ./logs/nginx/:/var/log/nginx/
+      - /var/log/:/var/log/
+    #  #Mount the apache2 logs into the filebeat container so we can access and index them using the filebeat apache2 module
+    #  - ./logs/apache2/:/var/log/apache2/
+    #  #Mount the mysql logs into the filebeat container so we can access and and index them using the filebeat mysql module
+    #  - ./logs/mysql/:/var/log/mysql/
+    #  #Mount the hosts system log directory. This represents the logs of the VM hosting docker. Consumed by the filebeat system module.
+    #  - /var/log/:/var/log/host/:ro
+    #  #Mount the docker logs for indexing by the custom prospector ./config/filebeat/prospectors.d
+    #  - /var/lib/docker/containers:/hostfs/var/lib/docker/containers
+    #  #Named volume fsdata. This is used to persist the registry file between restarts, so to avoid data duplication
+    #  - fbdata:/usr/share/filebeat/data/
+    #  #command: filebeat -e -E output.elasticsearch.username=elastic -E output.elasticsearch.password=${ES_PASSWORD} -strict.perms=false
+    restart: on-failure
+  #depends_on: 
+  #  es01:
+  #wait for the elastic search contianer to come up services to come up. This ensures the logs are available and ES exists for indexing
+     
+networks:
+  elastic:
+    driver: bridge

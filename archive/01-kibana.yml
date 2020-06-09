@@ -1,0 +1,14 @@
+version: '2'
+services:
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.7.1
+    volumes:
+      - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml
+      - ./kibana/plugins:/usr/share/kibana/x-pack/plugins/
+    networks:
+      - elastic
+    ports:
+      - 5601:5601
+networks:
+  elastic:
+    driver: bridge
