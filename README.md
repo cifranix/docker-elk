@@ -118,7 +118,36 @@ Older major versions are also supported on separate branches:
 
 ### Bringing up the stack
 
-Ensure your box has at least 4 CPU cores and 6GB memory.
+Ensure your box has: 
+  * 2 interfaces 
+  * at least 4 CPU cores
+  * 6GB memory.
+
+Setting up the suricata interface on Centos 7: 
+
+What is the second interface name? You can check by issuing `ip a`
+```console 
+$ export interface=<YOUR_INTERFACE_NAME>
+```
+EX:
+```console
+$ export interface=eth1
+```
+
+Build the promiscous interface. This is what suricata will listen on: 
+```console
+touch /etc/sysconfig/network-scripts/ifcfg-${interface}
+
+echo TYPE=Ethernet > /etc/sysconfig/network-scripts/ifcfg-${interface}
+echo DEVICE=${interface} >> /etc/sysconfig/network-scripts/ifcfg-${interface}
+echo IPADDR=none >> /etc/sysconfig/network-scripts/ifcfg-${interface}
+echo PROMISC=yes >> /etc/sysconfig/network-scripts/ifcfg-${interface}
+echo BOOTPROTO=none >> /etc/sysconfig/network-scripts/ifcfg-${interface}
+echo ONBOOT=yes >> /etc/sysconfig/network-scripts/ifcfg-${interface}
+
+systemctl restart network
+```
+
 
 Clone Repo:
 ```console
