@@ -122,7 +122,7 @@ Ensure your box has at least 4 CPU cores and 6GB memory.
 
 Clone Repo:
 ```console
-$ git clone https://github.com/cifranix/docker-elk.git
+$ git clone https://github.com/cifranix/docker-elk.git && cd docker-elk
 ```
 
 Disable off SELinux
