@@ -118,6 +118,8 @@ Older major versions are also supported on separate branches:
 
 ### Bringing up the stack
 
+Ensure your box has at least 4 CPU cores and 6GB memory.
+
 Clone Repo:
 ```console
 $ git clone https://github.com/cifranix/docker-elk.git
