@@ -1,9 +1,11 @@
 version: '2'
 services:
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.7.1
+    image: docker.elastic.co/kibana/kibana:7.6.2
+#    command: bash -c "rm -rf /usr/share/kibana/x-pack/plugins/monitoring"
     volumes:
       - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml
+#      - ./kibana/monitoring:/usr/share/kibana/x-pack/plugins/monitoring
     networks:
       - elastic
     ports:
