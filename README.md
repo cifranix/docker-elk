@@ -128,7 +128,7 @@ $ git clone https://github.com/cifranix/docker-elk.git
 Disable off SELinux
 ```console
 $ setenforce 0
-$ sed -i 's/enforcing/disabled/g' /etc/sysconfig/selinux
+$ sed -i 's/enforcing/disabled/g' /etc/selinux/config
 ```
 
 For Centos7, first install docker, and ensure it's on:
