@@ -5,3 +5,33 @@
 9/6/2020 -- 17:19:20 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
 9/6/2020 -- 17:19:20 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
 9/6/2020 -- 17:19:20 - <Notice> - all 1 packet processing threads, 4 management threads initialized, engine started.
+10/6/2020 -- 22:11:12 - <Notice> - This is Suricata version 4.1.2 RELEASE
+10/6/2020 -- 22:11:18 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+10/6/2020 -- 22:11:18 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+10/6/2020 -- 22:11:18 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+10/6/2020 -- 22:11:18 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+10/6/2020 -- 22:11:18 - <Notice> - all 4 packet processing threads, 4 management threads initialized, engine started.
+10/6/2020 -- 22:26:51 - <Notice> - This is Suricata version 4.1.2 RELEASE
+10/6/2020 -- 22:26:57 - <Error> - [ERRCODE: SC_ERR_AFP_CREATE(190)] - Unable to find type for iface "--init-errors-fatal": No such device
+10/6/2020 -- 22:26:57 - <Notice> - all 4 packet processing threads, 4 management threads initialized, engine started.
+10/6/2020 -- 22:26:57 - <Error> - [ERRCODE: SC_ERR_AFP_CREATE(190)] - Unable to find iface --init-errors-fatal: No such device
+10/6/2020 -- 22:26:57 - <Error> - [ERRCODE: SC_ERR_AFP_CREATE(190)] - Couldn't init AF_PACKET socket, fatal error
+10/6/2020 -- 22:26:57 - <Error> - [ERRCODE: SC_ERR_FATAL(171)] - thread W#01---in..atal failed
+10/6/2020 -- 22:27:32 - <Notice> - This is Suricata version 4.1.2 RELEASE
+10/6/2020 -- 22:27:36 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+10/6/2020 -- 22:27:36 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+10/6/2020 -- 22:27:36 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+10/6/2020 -- 22:27:36 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+10/6/2020 -- 22:27:36 - <Notice> - all 4 packet processing threads, 4 management threads initialized, engine started.
+10/6/2020 -- 22:54:29 - <Notice> - This is Suricata version 4.1.2 RELEASE
+10/6/2020 -- 22:54:33 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+10/6/2020 -- 22:54:33 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+10/6/2020 -- 22:54:33 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+10/6/2020 -- 22:54:33 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+10/6/2020 -- 22:54:33 - <Notice> - all 4 packet processing threads, 4 management threads initialized, engine started.
+10/6/2020 -- 22:56:55 - <Notice> - This is Suricata version 4.1.2 RELEASE
+10/6/2020 -- 22:56:58 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+10/6/2020 -- 22:56:58 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+10/6/2020 -- 22:56:58 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+10/6/2020 -- 22:56:58 - <Warning> - [ERRCODE: SC_ERR_SYSCALL(50)] - Failure when trying to set feature via ioctl for 'ens37': Operation not permitted (1)
+10/6/2020 -- 22:56:58 - <Notice> - all 4 packet processing threads, 4 management threads initialized, engine started.
