@@ -146,10 +146,23 @@ echo BOOTPROTO=none >> /etc/sysconfig/network-scripts/ifcfg-${interface}
 echo ONBOOT=yes >> /etc/sysconfig/network-scripts/ifcfg-${interface}
 
 systemctl restart network
+
+ip link set ${interface} promisc on
+```
+> :warning: If using vmware fusion, you might need to enter your admin password to enable promiscous mode.  
+
+Check to ensure listening interface is set up correctly: 
+```console
+ip a
+```
+Output should be similar to: 
+```
+3: ens37: <BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 00:0c:29:f6:f0:15 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::20c:29ff:fef6:f015/64 scope link
 ```
 
-
-Clone Repo:
+Clone Repo (run as root):
 ```console
 $ git clone https://github.com/cifranix/docker-elk.git && cd docker-elk
 ```
