@@ -125,7 +125,7 @@ Ensure your box has:
 
 Setting up the suricata interface on Centos 7: 
 
-What is the second interface name? You can check by issuing `ip a`
+What is the second interface name? This would be the interface that you'd like suricata to monitor. You can check by issuing `ip a`
 ```console 
 $ export interface=<YOUR_INTERFACE_NAME>
 ```
@@ -134,39 +134,23 @@ EX:
 $ export interface=eth1
 ```
 
-Build the promiscous interface. This is what suricata will listen on: 
+Turn on promiscous mode: 
 ```console
-touch /etc/sysconfig/network-scripts/ifcfg-${interface}
-
-echo TYPE=Ethernet > /etc/sysconfig/network-scripts/ifcfg-${interface}
-echo DEVICE=${interface} >> /etc/sysconfig/network-scripts/ifcfg-${interface}
-echo IPADDR=none >> /etc/sysconfig/network-scripts/ifcfg-${interface}
-echo PROMISC=yes >> /etc/sysconfig/network-scripts/ifcfg-${interface}
-echo BOOTPROTO=none >> /etc/sysconfig/network-scripts/ifcfg-${interface}
-echo ONBOOT=yes >> /etc/sysconfig/network-scripts/ifcfg-${interface}
-
-systemctl restart network
-
-ip link set ${interface} promisc on
+$ ip link set ${interface} promisc on
+$ systemctl restart network
 ```
+
 > :warning: If using vmware fusion, you might need to enter your admin password to enable promiscous mode.  
-
-Check to ensure listening interface is set up correctly: 
-```console
-ip a
-```
-Output should be similar to: 
-```
-3: ens37: <BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
-    link/ether 00:0c:29:f6:f0:15 brd ff:ff:ff:ff:ff:ff
-    inet6 fe80::20c:29ff:fef6:f015/64 scope link
-```
 
 Clone Repo (run as root):
 ```console
 $ git clone https://github.com/cifranix/docker-elk.git && cd docker-elk
 ```
 
+Add your interface to the .env file
+```console
+$ echo SURICATA_INT=${interface} > .env
+```
 Disable off SELinux
 ```console
 $ setenforce 0
@@ -199,7 +183,10 @@ Clone this repository onto the Docker host that will run the stack, then start s
 $ docker-compose up
 ```
 
+
 You can also run all services in the background (detached mode) by adding the `-d` flag to the above command.
+
+> :warning: It could take several minutes for to bootstrap before kibana is ready on port 5601 
 
 > :warning: You must rebuild the stack images with `docker-compose build` whenever you switch branch or update the
 > version of an already existing stack.
