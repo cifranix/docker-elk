@@ -100,22 +100,6 @@ exclusively. Make sure the repository is cloned in one of those locations or fol
 
 ## Usage
 
-### Version selection
-
-This repository tries to stay aligned with the latest version of the Elastic stack. The `master` branch tracks the
-current major version (7.x).
-
-To use a different version of the core Elastic components, simply change the version number inside the `.env` file. If
-you are upgrading an existing stack, please carefully read the note in the next section.
-
-> :warning: Always pay attention to the [official upgrade instructions][upgrade] for each individual component before
-performing a stack upgrade.
-
-Older major versions are also supported on separate branches:
-
-* [`release-6.x`](https://github.com/deviantony/docker-elk/tree/release-6.x): 6.x series
-* [`release-5.x`](https://github.com/deviantony/docker-elk/tree/release-5.x): 5.x series (End-Of-Life)
-
 ### Bringing up the stack
 
 Ensure your box has: 
@@ -132,15 +116,7 @@ $ export interface=<YOUR_INTERFACE_NAME>
 EX:
 ```console
 $ export interface=eth1
-```
-
-Turn on promiscous mode: 
-```console
-$ ip link set ${interface} promisc on
-$ systemctl restart network
-```
-
-> :warning: If using vmware fusion, you might need to enter your admin password to enable promiscous mode.  
+``` 
 
 Clone Repo (run as root):
 ```console
