@@ -136,8 +136,8 @@ $ export interface=eth1
 
 Turn on promiscous mode: 
 ```console
-ip link set ${interface} promisc on
-systemctl restart network
+$ ip link set ${interface} promisc on
+$ systemctl restart network
 ```
 
 > :warning: If using vmware fusion, you might need to enter your admin password to enable promiscous mode.  
@@ -149,7 +149,7 @@ $ git clone https://github.com/cifranix/docker-elk.git && cd docker-elk
 
 Add your interface to the .env file
 ```console
-echo SURICATA_INT=${interface} > .env
+$ echo SURICATA_INT=${interface} > .env
 ```
 Disable off SELinux
 ```console
