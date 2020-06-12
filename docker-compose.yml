@@ -72,6 +72,23 @@ services:
     restart: on-failure
 
 
+
+# Suricata IDS
+  suricata:
+    image: docker.io/cifranix/suricata:4.1.2
+    container_name: suricata
+    volumes:
+      # A directory for logs
+      - ./suricata/logs/:/var/log/suricata/
+      # configuration file directory
+      - ./suricata/etc/:/etc/suricata/
+      # rule file
+      - ./suricata/rules/suricata.rules:/var/lib/suricata/rules/suricata.rules
+    network_mode: host
+    # the SURICATA_INT variable is stored in the '.env' file within the repo
+    command: bash -c "echo ${SURICATA_INT} && /usr/bin/suricata -c /etc/suricata/suricata.yaml -i ${SURICATA_INT} --init-errors-fatal"
+
+
 # start kibana 
   kibana:
     #image: docker.elastic.co/kibana/kibana:7.7.1
