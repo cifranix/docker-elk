@@ -1,15 +1,12 @@
-# Docker Suricata IDS deployment with Elastic Stack SIEM Elastic Stack on Docker
+# Docker Suricata IDS deployment 
+## with Elastic Stack SIEM
 
-[![Elastic Stack version](https://img.shields.io/badge/ELK-7.6.2-blue.svg?style=flat)](https://github.com/deviantony/docker-elk/issues/483)
+[![Elastic Stack version](https://img.shields.io/badge/ELK-7.7.1-blue.svg?style=flat)]
 
 Run the latest version of the [Elastic stack][elk-stack] with Docker and Docker Compose.
 
-It gives you the ability to analyze any data set by using the searching/aggregation capabilities of Elasticsearch and
-the visualization power of Kibana, with Security alerts consumed from Suricata.
-
-> :information_source: The Docker images backing this stack include [Stack Features][stack-features] (formerly X-Pack)
-with [paid features][paid-features] enabled by default (see [How to disable paid
-features](#how-to-disable-paid-features) to disable them). The [trial license][trial-license] is valid for 30 days.
+This repo gives you the ability to analyze Security alerts consumed from Suricata by using the searching/aggregation capabilities of Elasticsearch and
+the visualization power of Kibana.
 
 Based on the official Docker images from Elastic:
 
@@ -17,6 +14,8 @@ Based on the official Docker images from Elastic:
 * [Logstash](https://github.com/elastic/logstash/tree/master/docker)
 * [Kibana](https://github.com/elastic/kibana/tree/master/src/dev/build/tasks/os_packages/docker_generator)
 
+Based on personal custom Docker image: 
+* [Suricata](https://hub.docker.com/repository/docker/cifranix/suricata)
 
 ## Requirements
 
@@ -24,7 +23,7 @@ Based on the official Docker images from Elastic:
 
 * [Docker Engine](https://docs.docker.com/install/) version **17.05** or newer
 * [Docker Compose](https://docs.docker.com/compose/install/) version **1.20.0** or newer
-* 1.5 GB of RAM
+* 4 GB of RAM
 
 > :information_source: Especially on Linux, make sure your user has the [required permissions][linux-postinstall] to
 > interact with the Docker daemon.
