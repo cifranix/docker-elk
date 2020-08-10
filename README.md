@@ -1,10 +1,6 @@
 # Docker Suricata IDS deployment 
 ## with Elastic Stack SIEM
 
-[![Elastic Stack version](https://img.shields.io/badge/ELK-7.7.1-blue.svg?style=flat)]
-
-Run the latest version of the [Elastic stack][elk-stack] with Docker and Docker Compose.
-
 This repo gives you the ability to analyze Security alerts consumed from Suricata by using the searching/aggregation capabilities of Elasticsearch and
 the visualization power of Kibana.
 
@@ -14,7 +10,7 @@ Based on the official Docker images from Elastic:
 * [Logstash](https://github.com/elastic/logstash/tree/master/docker)
 * [Kibana](https://github.com/elastic/kibana/tree/master/src/dev/build/tasks/os_packages/docker_generator)
 
-Based on personal custom Docker image: 
+Based on custom Docker image: 
 * [Suricata](https://hub.docker.com/repository/docker/cifranix/suricata)
 
 ## Requirements
@@ -37,16 +33,6 @@ By default, the stack exposes the following ports:
 > :warning: Elasticsearch's [bootstrap checks][booststap-checks] were purposely disabled to facilitate the setup of the
 > Elastic stack in development environments. For production setups, we recommend users to set up their host according to
 > the instructions from the Elasticsearch documentation: [Important System Configuration][es-sys-config].
-
-### SELinux
-
-On distributions which have SELinux enabled out-of-the-box you will need to either re-context the files or set SELinux
-into Permissive mode in order for docker-elk to start properly. For example on Redhat and CentOS, the following will
-apply the proper context:
-
-```console
-$ chcon -R system_u:object_r:admin_home_t:s0 docker-elk/
-```
 
 ## Usage
 
